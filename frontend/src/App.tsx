@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
+import Navbar from './components/Navbar'
 import PieceCard from "@/components/PieceCard"
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -9,10 +10,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <PieceCard />
+    <div>
+      <Navbar />
+      <div className="flex gap-4 min-h-svh flex-row items-center justify-center">
+        <PieceCard />
+        <PieceCard />
+        <PieceCard />
+      </div>
     </div>
-  )
+  );
 }
 
 export default App
