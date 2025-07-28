@@ -1,3 +1,4 @@
+import { Button } from "./ui/button";
 import {
   Card,
   CardAction,
@@ -14,7 +15,7 @@ function PieceCard() {
             <CardHeader>
                 <CardTitle>Gotkovsky Trombone Concerto</CardTitle>
                 <CardDescription>French 20th century piece with three movements</CardDescription>
-                <CardAction>Add to Recital</CardAction>
+                <CardAction><AddToRecitalButton /></CardAction>
             </CardHeader>
             <CardContent>
                 <p>Card Content</p>
@@ -25,5 +26,11 @@ function PieceCard() {
         </Card>
     );
 }
+
+function AddToRecitalButton() {
+    return (
+        <Button variant="outline" className="text-lg" size="default">+</Button>
+    );
+};
 
 export default PieceCard;
