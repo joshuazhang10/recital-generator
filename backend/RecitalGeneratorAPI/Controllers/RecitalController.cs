@@ -2,22 +2,25 @@ using Microsoft.AspNetCore.Mvc;
 using RecitalGeneratorAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
-[ApiController]
-[Route("api/[controller]")]
-public class RecitalsController : ControllerBase
+namespace RecitalGeneratorAPI.Controllers
 {
-    private readonly AppDbContext _context;
-
-    public RecitalsController(AppDbContext context)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class RecitalsController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
 
-    // Example GET endpoint
-    [HttpGet]
-    public async Task<IActionResult> GetRecitals()
-    {
-        var recitals = await _context.Recitals.ToListAsync();
-        return Ok(recitals);
+        public RecitalsController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        // Example GET endpoint
+        [HttpGet]
+        public async Task<IActionResult> GetRecitals()
+        {
+            var recitals = await _context.Recitals.ToListAsync();
+            return Ok(recitals);
+        }
     }
 }

@@ -26,3 +26,6 @@ dist-ssr
 
 Dockerfile
 docker-compose.yml
+backend/RecitalGeneratorAPI/appsettings.json
+backend/RecitalGeneratorAPI/.env
+frontend/package-lock.json
