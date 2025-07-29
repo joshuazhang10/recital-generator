@@ -65,7 +65,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - jszhan26@colby.edu
+Joshua Zhang - jszhan26@colby.edu
 
 Project Link: [https://github.com/joshuazhang10/recital-generator](https://github.com/joshuazhang10/recital-generator)
 
