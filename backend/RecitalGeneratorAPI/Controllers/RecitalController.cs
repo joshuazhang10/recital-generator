@@ -6,16 +6,15 @@ namespace RecitalGeneratorAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RecitalsController : ControllerBase
+    public class RecitalController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public RecitalsController(AppDbContext context)
+        public RecitalController(AppDbContext context)
         {
             _context = context;
         }
 
-        // Example GET endpoint
         [HttpGet]
         public async Task<IActionResult> GetRecitals()
         {

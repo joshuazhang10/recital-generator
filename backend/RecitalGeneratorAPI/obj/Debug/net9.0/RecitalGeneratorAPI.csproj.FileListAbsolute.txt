@@ -75,12 +75,19 @@ C:/Users/user/Desktop/recital-generator/backend/RecitalGeneratorAPI/obj/Debug/ne
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/RecitalGeneratorAPI.pdb
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/DotNetEnv.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Humanizer.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Razor.Language.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Build.Locator.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Razor.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
@@ -94,6 +101,8 @@ C:/Users/user/Desktop/recital-generator/backend/RecitalGeneratorAPI/obj/Debug/ne
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.Identity.Core.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.Identity.Stores.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
@@ -102,6 +111,8 @@ C:/Users/user/Desktop/recital-generator/backend/RecitalGeneratorAPI/obj/Debug/ne
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Mono.TextTemplating.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/MySqlConnector.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/MySqlConnector.DependencyInjection.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Newtonsoft.Json.dll
+/home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Newtonsoft.Json.Bson.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Pomelo.EntityFrameworkCore.MySql.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/Sprache.dll
 /home/joshua/dev/recital-generator/backend/RecitalGeneratorAPI/bin/Debug/net9.0/System.CodeDom.dll

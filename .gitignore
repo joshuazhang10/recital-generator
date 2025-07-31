@@ -29,3 +29,4 @@ docker-compose.yml
 backend/RecitalGeneratorAPI/appsettings.json
 backend/RecitalGeneratorAPI/.env
 frontend/package-lock.json
+backend/RecitalGeneratorAPI/bin/Debug/net9.0/appsettings.json

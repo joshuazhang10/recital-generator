@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 using RecitalGeneratorAPI.Models;
 
 namespace RecitalGeneratorAPI.Data;
 
-public partial class AppDbContext : DbContext
+public partial class AppDbContext : IdentityDbContext<ApplicationUser>
 {
-    public AppDbContext()
-    {
-    }
 
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
@@ -21,10 +19,11 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Recital> Recitals { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
@@ -50,15 +49,12 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Title).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<ApplicationUser>(entity =>
         {
             entity
-                .HasNoKey()
                 .ToTable("users");
 
             entity.Property(e => e.Email).HasMaxLength(150);
-            entity.Property(e => e.Password).HasMaxLength(100);
-            entity.Property(e => e.Username).HasMaxLength(100);
         });
 
         OnModelCreatingPartial(modelBuilder);
