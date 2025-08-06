@@ -22,6 +22,7 @@ namespace RecitalGeneratorAPI.Controllers
         }
 
         [HttpPost]
+        [Route("register-user")]
         public async Task<IActionResult> Register(RegisterDto model)
         {
             var existingUser = await _userManager.FindByNameAsync(model.Email);

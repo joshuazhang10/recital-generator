@@ -20,6 +20,13 @@ export default defineConfig({
       protocol: 'ws',
       clientPort: 5173
     },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
     // watch: {
     //   usePolling: true,
     //   interval: 100
