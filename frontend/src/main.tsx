@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import AuthLayout from './routes/AuthLayout'
 import Register from './routes/Register'
+import Login from './routes/Login'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')!).render(
 
       <Route element={<AuthLayout />}>
         <Route path="register" element={<Register />}/>
+        <Route path="login" element={<Login />}/>
       </Route>
     </Routes>
   </BrowserRouter>,

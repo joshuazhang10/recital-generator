@@ -25,10 +25,10 @@ namespace RecitalGeneratorAPI.Controllers
         [Route("register-user")]
         public async Task<IActionResult> Register(RegisterDto model)
         {
-            var existingUser = await _userManager.FindByNameAsync(model.Email);
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
             if (existingUser != null)
             {
-                return BadRequest("ApplicationUser already exists");
+                return BadRequest("ApplicationUser already exists"); // Duplicate usernames are not allowed by default
             }
 
             if (!ModelState.IsValid)
@@ -53,11 +53,24 @@ namespace RecitalGeneratorAPI.Controllers
             return Ok("ApplicationUser registered successfully.");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Login()
+        [HttpPost]
+        [Route("login-user")]
+        public async Task<IActionResult> Login(LoginDto model)
         {
-            var recitals = await _context.ApplicationUsers.ToListAsync();
-            return Ok(recitals);
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return BadRequest("No user with this email was found.");
+            }
+            bool isValidPassword = await _userManager.CheckPasswordAsync(user, model.Password);
+            if (!isValidPassword)
+            {
+                return Unauthorized();
+            }
+
+            // TODO: Token-based authentication/mfa implementation
+
+            return Ok("ApplicationUser logged in successfully.");
         }
     }
 }
