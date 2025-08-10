@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
 using RecitalGeneratorAPI.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 Console.WriteLine("App is running and listening...");
 
@@ -41,6 +44,27 @@ builder.Services.AddCors(options =>
     });
 });
 
+var jwtSettings = builder.Configuration.GetSection("Authentication:Schemes:Bearer");
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;    
+}).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["ValidIssuer"],
+        ValidAudience = jwtSettings["ValidAudiences:0"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["IssuerSigningKey"]))
+    };
+}); // Values are defined in appsettings
 
 var app = builder.Build();
 
@@ -52,10 +76,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-
 // app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

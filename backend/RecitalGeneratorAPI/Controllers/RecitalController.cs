@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RecitalGeneratorAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RecitalGeneratorAPI.Controllers
 {
@@ -16,6 +17,8 @@ namespace RecitalGeneratorAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+        [Route("get-recitals")]
         public async Task<IActionResult> GetRecitals()
         {
             var recitals = await _context.Recitals.ToListAsync();

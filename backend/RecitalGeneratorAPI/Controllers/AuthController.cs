@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Identity;
 using RecitalGeneratorAPI.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RecitalGeneratorAPI.DTOs;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace RecitalGeneratorAPI.Controllers
 {
@@ -14,11 +18,13 @@ namespace RecitalGeneratorAPI.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly AppDbContext _context;
+        private readonly IConfiguration _config;
 
-        public AuthController(UserManager<ApplicationUser> userManager, AppDbContext context)
+        public AuthController(UserManager<ApplicationUser> userManager, AppDbContext context, IConfiguration config)
         {
             _context = context;
             _userManager = userManager;
+            _config = config;
         }
 
         [HttpPost]
@@ -68,9 +74,36 @@ namespace RecitalGeneratorAPI.Controllers
                 return Unauthorized();
             }
 
-            // TODO: Token-based authentication/mfa implementation
+            var token = GenerateAccessToken(user.UserName, user.Email);
 
-            return Ok("ApplicationUser logged in successfully.");
+            var response = new
+            {
+                AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
+                Message = "ApplicationUser logged in successfully."
+            }; 
+            return Ok(response);
+        }
+
+        private JwtSecurityToken GenerateAccessToken(string userName, string email)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, userName),
+                new Claim(ClaimTypes.Email, email)
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: _config["Authentication:Schemes:Bearer:ValidIssuer"],
+                audience: _config["Authentication:Schemes:Bearer:ValidAudiences:0"], // 0 -> First valid audience
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(10),
+                signingCredentials: new SigningCredentials(
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Authentication:Schemes:Bearer:IssuerSigningKey"])),
+                    SecurityAlgorithms.HmacSha256
+                )
+            );
+
+            return token;
         }
     }
 }
