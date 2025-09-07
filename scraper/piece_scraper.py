@@ -14,7 +14,7 @@ class PieceScraper:
             url (str): The URL to scrape from.
 
         '''
-        chromedriver_path = "/usr/bin/chromedriver-linux64/chromedriver"
+        chromedriver_path = r"C:\Program Files\chromedriver-win64\chromedriver.exe"
         service = Service(executable_path=chromedriver_path)
 
         chrome_options = Options()
@@ -25,7 +25,11 @@ class PieceScraper:
         self.url = url
         self.links = []
 
+        self.__get_piece_links()
+
     def __get_piece_links(self):
+        """Generates piece links from self.url.
+        """        
         self.driver.get(self.url)
 
         while True:
@@ -45,15 +49,16 @@ class PieceScraper:
             except:
                 break
             if next_page_outer.text.endswith('(no next)'): # Break if last page
-                print("Scraping complete.")
                 break
+        print("Scraping complete.")
+
+    
 
 
 def main():
     url = "https://imslp.org/wiki/Category:For_trombone,_orchestra"
     # url = "https://imslp.org/wiki/Category:For_violin,_orchestra"
     trombone_scraper = PieceScraper(url)
-    # trombone_scraper.
 
 if __name__ == '__main__':
     main()

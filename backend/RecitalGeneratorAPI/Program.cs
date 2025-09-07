@@ -16,15 +16,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
-// var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 Console.WriteLine(connectionString);
 if (string.IsNullOrEmpty(connectionString))
 {
     Console.WriteLine("Connection string not found.");
     return;
 }
+// var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
