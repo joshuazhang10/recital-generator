@@ -15,10 +15,8 @@ export default defineConfig({
     host: true,
     port: 5173,
     hmr: {
-      host: 'localhost',
-      port: 5173,
+      clientPort: 5173,
       protocol: 'ws',
-      clientPort: 5173
     },
     proxy: {
       '/api': {
@@ -26,10 +24,10 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       }
+    },
+    watch: {
+      usePolling: true,
+      interval: 100,
     }
-    // watch: {
-    //   usePolling: true,
-    //   interval: 100
-    // }
   }
 })

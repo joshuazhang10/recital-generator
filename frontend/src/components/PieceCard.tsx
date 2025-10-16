@@ -9,11 +9,11 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-function PieceCard() {
+function PieceCard({ title } : {title: string}) {
     return (
         <Card className="w-full max-w-sm bg-blue-200">
             <CardHeader>
-                <CardTitle>Gotkovsky Trombone Concerto</CardTitle>
+                <CardTitle>{title}</CardTitle>
                 <CardDescription>French 20th century piece with three movements</CardDescription>
                 <CardAction><AddToRecitalButton /></CardAction>
             </CardHeader>
