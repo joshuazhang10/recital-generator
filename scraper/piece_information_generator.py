@@ -23,17 +23,26 @@ class PieceInformationGenerator():
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
         self.url = url
 
-    def get_piece_information(self) -> str:
+    def get_piece_information(self) -> dict:
         '''Scrapes piece url and returns general information as a string.
 
         Returns:
-            str: Piece information, not cleaned up
+            dict: Piece information. (key, value) where key is the information type 
+            and value is the information.
         '''  
         self.driver.get(self.url)
-        piece_info = self.driver.find_element(By.CLASS_NAME, 'wi_body')
-        return piece_info.text
+        # piece_info = self.driver.find_element(By.CLASS_NAME, 'wi_body')
+        # return piece_info.text
+        piece_information = {}
+        piece_info_body = self.driver.find_element(By.CLASS_NAME, 'wi_body')
+        piece_info_rows = piece_info_body.find_elements(By.TAG_NAME, 'tr')
+        for row in piece_info_rows:
+            information_type = row.find_element(By.TAG_NAME, 'th').text
+            information_value = row.find_element(By.TAG_NAME, 'td').text
+            piece_information[information_type] = information_value
+        return piece_information
 
-    def generate_description(self, piece_info: str) -> str:
+    def generate_description(self, piece_info: dict) -> str:
         '''Uses ollama (llama3.1) to generate a description of the given piece.
         '''
         response: ChatResponse = chat(model='llama3.1', messages=[
@@ -52,6 +61,6 @@ class PieceInformationGenerator():
 if __name__ == '__main__':
     test_piece = PieceInformationGenerator(r"https://imslp.org/wiki/Trombone_Concerto_(Tomasi%2C_Henri)")
     piece_info = test_piece.get_piece_information()
-    test_piece.generate_description(piece_info)
+    print(test_piece.generate_description(piece_info))
 
     

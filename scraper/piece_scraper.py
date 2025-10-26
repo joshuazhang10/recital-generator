@@ -26,9 +26,9 @@ class PieceScraper:
         self.url = url
         self.links = []
 
-        self.__get_piece_links()
+        self._get_piece_links()
 
-    def __get_piece_links(self):
+    def _get_piece_links(self):
         """Generates piece links from self.url.
         """        
         self.driver.get(self.url)
@@ -55,7 +55,7 @@ class PieceScraper:
 
     def db_add_links(self):
         for link in self.links:
-            
+            pass
 
 
 
