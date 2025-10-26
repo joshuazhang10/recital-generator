@@ -14,7 +14,7 @@ const loginUser = (formData: {
     email: FormDataEntryValue | null;
     password: FormDataEntryValue | null;
 }) => {
-    const url = 'http://localhost:8080/api/auth/login-user';
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/auth/login-user`;
     fetch(url, {
         method: 'POST',
         headers: {
