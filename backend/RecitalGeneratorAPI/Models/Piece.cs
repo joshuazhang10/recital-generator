@@ -11,7 +11,7 @@ public partial class Piece
 
     public string? Composer { get; set; }
 
-    public TimeOnly? Duration { get; set; }
+    public string? Duration { get; set; }
 
     public string? Notes { get; set; }
 }

@@ -35,7 +35,7 @@ public partial class AppDbContext : IdentityDbContext<ApplicationUser>
                 .ToTable("pieces");
 
             entity.Property(e => e.Composer).HasMaxLength(255);
-            entity.Property(e => e.Duration).HasColumnType("time");
+            entity.Property(e => e.Duration).HasMaxLength(255);
             entity.Property(e => e.Notes).HasColumnType("text");
             entity.Property(e => e.Title).HasMaxLength(255);
         });
