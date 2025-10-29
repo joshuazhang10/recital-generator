@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RecitalGeneratorAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+def79902abfdce40bf64f3f723190a9f1ce6435b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0be74b597fd9d485dc3f94a841f4165ea97f79e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("RecitalGeneratorAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RecitalGeneratorAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

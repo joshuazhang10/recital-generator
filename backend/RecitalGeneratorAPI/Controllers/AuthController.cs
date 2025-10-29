@@ -74,7 +74,7 @@ namespace RecitalGeneratorAPI.Controllers
                 return Unauthorized();
             }
 
-            var token = GenerateAccessToken(user.UserName, user.Email);
+            var token = GenerateAccessToken(user.Id, user.UserName, user.Email);
 
             var response = new
             {
@@ -84,10 +84,11 @@ namespace RecitalGeneratorAPI.Controllers
             return Ok(response);
         }
 
-        private JwtSecurityToken GenerateAccessToken(string userName, string email)
+        private JwtSecurityToken GenerateAccessToken(string id, string userName, string email)
         {
             var claims = new List<Claim>
             {
+                new Claim(JwtRegisteredClaimNames.Sub, id),
                 new Claim(ClaimTypes.Name, userName),
                 new Claim(ClaimTypes.Email, email)
             };
