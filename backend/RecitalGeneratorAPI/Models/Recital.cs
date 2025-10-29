@@ -13,5 +13,5 @@ public partial class Recital
 
     public DateOnly? Date { get; set; }
 
-    public virtual ICollection<Piece> Pieces { get; set; } = new List<Piece>();
+    public virtual ICollection<RecitalPiece> RecitalPieces { get; set; } = new List<RecitalPiece>();
 }

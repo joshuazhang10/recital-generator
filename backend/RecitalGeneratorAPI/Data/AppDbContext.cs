@@ -21,6 +21,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<Recital> Recitals { get; set; }
 
+    public virtual DbSet<RecitalPiece> RecitalPieces { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -51,26 +53,27 @@ public partial class AppDbContext : DbContext
 
             entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.UserId).HasMaxLength(255);
+        });
 
-            entity.HasMany(d => d.Pieces).WithMany(p => p.Recitals)
-                .UsingEntity<Dictionary<string, object>>(
-                    "RecitalPiece",
-                    r => r.HasOne<Piece>().WithMany()
-                        .HasForeignKey("PieceId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("recital_pieces_ibfk_2"),
-                    l => l.HasOne<Recital>().WithMany()
-                        .HasForeignKey("RecitalId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("recital_pieces_ibfk_1"),
-                    j =>
-                    {
-                        j.HasKey("RecitalId", "PieceId")
-                            .HasName("PRIMARY")
-                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-                        j.ToTable("recital_pieces");
-                        j.HasIndex(new[] { "PieceId" }, "PieceId");
-                    });
+        modelBuilder.Entity<RecitalPiece>(entity =>
+        {
+            entity.HasKey(e => new { e.RecitalId, e.PieceId }).HasName("PRIMARY");
+
+            entity.ToTable("recital_pieces");
+
+            entity.HasIndex(e => e.PieceId).HasDatabaseName("PieceId");
+
+            entity.HasOne(e => e.Recital)
+                .WithMany(r => r.RecitalPieces)
+                .HasForeignKey(e => e.RecitalId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("recital_pieces_ibfk_1");
+
+            entity.HasOne(e => e.Piece)
+                .WithMany(p => p.RecitalPieces)
+                .HasForeignKey(e => e.PieceId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("recital_pieces_ibfk_2");
         });
 
         OnModelCreatingPartial(modelBuilder);

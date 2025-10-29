@@ -15,5 +15,5 @@ public partial class Piece
 
     public string? Notes { get; set; }
 
-    public virtual ICollection<Recital> Recitals { get; set; } = new List<Recital>();
+    public virtual ICollection<RecitalPiece> RecitalPieces { get; set; } = new List<RecitalPiece>();
 }
